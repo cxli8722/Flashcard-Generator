@@ -1,0 +1,22 @@
+{
+  "name": "li",
+  "version": "1.0.0",
+  "description": "homework",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxli8722/Flashcard-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cxli8722/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/cxli8722/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.2.1"
+  }
+}
