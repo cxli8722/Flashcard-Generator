@@ -12,11 +12,11 @@ var BasicCard= function(front, back) {
    var cardData={
     front: this.front,
     back: this.back,
-    choice: "basicCard"
+   
   };
 
 
-  fs.appendFile("cardData.txt", JSON.stringify(cardData), "utf8", function (err){
+  fs.appendFile("cardData.txt", JSON.stringify(cardData) + ";", "utf8", function (err){
  // If an error was experienced we say it.
   if (err) {
     console.log(err);
@@ -27,16 +27,16 @@ var BasicCard= function(front, back) {
 };
 
 
-// testing to see if it work 
- var firstPresident = new BasicCard("Who was the first president of the United States?", "George Washington");
- var firstPresidentB = new BasicCard("Who was the second president of the United States?", "sdkfajs");
+// // testing to see if it work 
+//  var firstPresident = new BasicCard("Who was the first president of the United States?", "George Washington");
+//  var firstPresidentB = new BasicCard("Who was the second president of the United States?", "sdkfajs");
 
-firstPresident.createCard();
+// firstPresident.createCard();
 
-// "Who was the first president of the United States?"
-console.log(firstPresident.front); 
+// // "Who was the first president of the United States?"
+// console.log(firstPresident.front); 
 
-// "George Washington"
-console.log(firstPresident.back); 
-// Exporting our basicCard constructor. We will require it in ClozeCard.js
-module.exports = BasicCard;
+// // "George Washington"
+// console.log(firstPresident.back); 
+// // Exporting our basicCard constructor. We will require it in ClozeCard.js
+ module.exports = BasicCard;

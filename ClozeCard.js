@@ -19,7 +19,7 @@ this.create=function(){
 		text: this.text,
 		cloze: this.cloze,
 		partial: this.partial,
-		choice: "clozeDeleted"
+	
 	};
 
 	//add to 
@@ -33,16 +33,16 @@ this.create=function(){
 };
 };  
 
-var firstPresidentCloze = new ClozeCard("George Washington was the first president of the United States.", "George Washington");
+// var firstPresidentCloze = new ClozeCard("George Washington was the first president of the United States.", "George Washington");
 
-// "George Washington"
-firstPresidentCloze.create();
-console.log(firstPresidentCloze.cloze); 
+// // "George Washington"
+// firstPresidentCloze.create();
+// console.log(firstPresidentCloze.cloze); 
 
-// " ... was the first president of the United States.
-console.log(firstPresidentCloze.partial); 
- // "George Washington was the first president of the United States.
-console.log(firstPresidentCloze.text)
+// // " ... was the first president of the United States.
+// console.log(firstPresidentCloze.partial); 
+//  // "George Washington was the first president of the United States.
+// console.log(firstPresidentCloze.text)
 
 
 

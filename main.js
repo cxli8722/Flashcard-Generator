@@ -1,5 +1,6 @@
 
-
+var ClozeCard = require('./ClozeCard');
+var BasicCard = require('./BasicCard');
 // Load the NPM Package inquirer
 var inquirer = require("inquirer");
 
@@ -75,36 +76,48 @@ inquirer
 			    // given the user a list to choose from.
 			    {
 			    	type: "input",
-				    name: "FrontCard",
-				    message: "please type your question"
-			     
+				    name: "frontCard",
+				    message: "please type your question",
+
+				    //validating to see if ureser enter a question 
+				    
+				   validate: function validateQuestion(name){
+       					 if (name === ""){
+       					 	console.log('please enter your question')
+       					 	return false 
+       					 }
+       					 else {
+       					 	return true 
+       					 }
+  						}
 			    },
 
 			    {
 			      type: "input",
 			      name: "backCard",
-			      message: "plase type your answer"
+			      message: "plase type your answer",
+
+			        validate: function validateQuestion(name){
+       					 if (name === ""){
+       					 	console.log('please enter your answer')
+       					 	return false 
+       					 }
+       					 else {
+       					 	return true 
+       					 }
+  						}
 			    },
 			    // Here we ask the user to confirm.
-			    {
-			      type: "confirm",
-			      message: "are you sure that's the qusestion and answer you want?",
-			      name: "confirm",
-			      default: true
-			    }
+			
 			  ])
 			  .then(function(result) {
 			    // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
-			    if (result.confirm && result.frontCard && result.backCard) {
-			      console.log("okay you want to create " + result.frontCard +"\n"+result.backCard);
+			    
+			    var basicFlashcard = new BasicCard( result.frontCard, result.backCard);
+			 	basicFlashcard.createCard();
+			 	console.log(basicFlashcard)
 			      
-			  
-			  }
-			     
-			    else {
-			      console.log(" enter your question and answer again\n");
-			          createCard();
-			   }
+			 	
  				 });
 
 
@@ -121,6 +134,67 @@ inquirer
     }
     else if (result.confirm && result.cardType=== 'cloze-flashcard') {
       console.log("okay you want to create " + result.cardType);
+
+
+
+
+      //--------------------------------------
+
+
+
+      //asking user to enter their question and answer 
+      inquirer
+			  .prompt([
+
+			    
+
+			    // given the user a list to choose from.
+			    {
+			    	type: "input",
+				    name: "text",
+				    message: "please enter your full sentence",
+
+				    //validating to see if ureser enter a question 
+				    
+				   validate: function validateQuestion(name){
+       					 if (name === ""){
+       					 	console.log('please enter your sentence')
+       					 	return false 
+       					 }
+       					 else {
+       					 	return true 
+       					 }
+  						}
+			    },
+
+			    {
+			      type: "input",
+			      name: "cloze",
+			      message: "please enter phrase(s) you wish to delete from your sentence",
+
+			        validate: function validateQuestion(name){
+       					 if (name === ""){
+       					 	console.log('please enter your your delete phrase(s)')
+       					 	return false 
+       					 }
+       					 else {
+       					 	return true 
+       					 }
+  						}
+			    },
+			    // Here we ask the user to confirm.
+			
+			  ])
+			  .then(function(result) {
+			    // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
+			    
+			    var clozeFlashcard = new ClozeCard( result.text, result.cloze);
+			 	clozeFlashcard.create();
+			 	console.log(clozeFlashcard)
+			      
+			 	
+ 				 });
+      //-----------------------------------------------------
   }
      
     else {

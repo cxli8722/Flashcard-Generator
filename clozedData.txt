@@ -1,1 +1,1 @@
-{"text":"George Washington was the first president of the United States.","cloze":"George Washington","partial":"... was the first president of the United States.","choice":"clozeDeleted"};
+{"text":"friday","cloze":"today is friday","partial":"friday"};{"text":"today is friday","cloze":"friday","partial":"today is ..."};
