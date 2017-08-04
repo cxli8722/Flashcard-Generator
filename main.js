@@ -4,6 +4,8 @@ var BasicCard = require('./BasicCard');
 // Load the NPM Package inquirer
 var inquirer = require("inquirer");
 
+var fs = require('fs');
+
 // Create a "Prompt" with a series of questions.
 inquirer
   .prompt([
@@ -31,12 +33,15 @@ inquirer
       createCard();
      
     }
-    else if (result.confirm && result.userOptions=== 'read')
+    else if (result.confirm && result.userOptions=== 'read'){
     	   console.log("okay you want to " + result.userOptions);
+    		readCard();
+    	}
     else {
       console.log(" come again when you are more sure.\n");
     }
   });
+
 
 
 var createCard= function(){
@@ -142,7 +147,7 @@ inquirer
 
 
 
-      //asking user to enter their question and answer 
+      //asking user 
       inquirer
 			  .prompt([
 
@@ -158,7 +163,7 @@ inquirer
 				    
 				   validate: function validateQuestion(name){
        					 if (name === ""){
-       					 	console.log('please enter your sentence')
+       					 	console.log('\n Error: please enter your sentence')
        					 	return false 
        					 }
        					 else {
@@ -170,11 +175,11 @@ inquirer
 			    {
 			      type: "input",
 			      name: "cloze",
-			      message: "please enter phrase(s) you wish to delete from your sentence",
+			      message: "please enter the portion you wish to delete",
 
 			        validate: function validateQuestion(name){
        					 if (name === ""){
-       					 	console.log('please enter your your delete phrase(s)')
+       					 	console.log('\nerror: please enter your delete phrase(s)')
        					 	return false 
        					 }
        					 else {
@@ -191,9 +196,8 @@ inquirer
 			    var clozeFlashcard = new ClozeCard( result.text, result.cloze);
 			 	clozeFlashcard.create();
 			 	console.log(clozeFlashcard)
-			      
-			 	
- 				 });
+
+ 			});
       //-----------------------------------------------------
   }
      
@@ -203,84 +207,25 @@ inquirer
   });
 }
 
-// Create a basic command line Node application using the inquirer package.
-// Your application should ask the user any five questions of your choosing.
-// The question set should include at least one:
+var readCard = function() {
 
-//    - Basic input,
-//    - Password,
-//    - List,
-//    - Check-box,
-//    - and Confirm
+	fs.readFile("BasicCard.txt", "utf8", function(error, data) {
 
-// Then if a user's password matches a pre-defined password, re-display the data back to the user with some text.
-// See the inquirer GitHub documentation "examples" page if you need help.
+  // If the code experiences any errors it will log the error to the console.
+  if (error) {
+    return console.log(error);
+  }
 
-// Remember to be creative!
+  // We will then print the contents of data
+  console.log(data);
 
-// // ========================================================================
-// // Load the NPM Package inquirer
-// var inquirer = require("inquirer");
+  // Then split it by commas (to make it more readable)
+  var dataArr = data.split(",");
 
-// // Created a series of questions
-// inquirer.prompt([
+  // We will then re-display the content as an array for later use.
+  console.log(dataArr);
 
-//   {
-//     type: "input",
-//     name: "name",
-//     message: "Who are you???"
-//   },
-
-//   {
-//     type: "list",
-//     name: "doingWhat",
-//     message: "What are you doing in my house??",
-//     choices: ["I made you cookies!", "No lie dude. I'm here to rob you.", "Uh. This is my house... Who are YOU???"]
-//   },
-
-//   {
-//     type: "checkbox",
-//     name: "carryingWhat",
-//     message: "What are you carrying in your hands??",
-//     choices: ["TV", "Slice of Toast", "Butter Knife"]
-//   },
-
-//   {
-//     type: "confirm",
-//     name: "canLeave",
-//     message: "Can you leave now?"
-//   },
-
-//   {
-//     type: "password",
-//     name: "myPassword",
-//     message: "Okay fine. You can stay. But only if you say the magic password."
-//   }
-
-// ]).then(function(user) {
-
-//   // If the user guesses the password...
-//   if (user.myPassword === "myHouse") {
-
-//     console.log("==============================================");
-//     console.log("");
-//     console.log("Well a deal's a deal " + user.name);
-//     console.log("You can stay as long as you like.");
-//     console.log("Just put down the " + user.carryingWhat.join(" and ") + ". It's kind of freaking me out.");
-//     console.log("");
-//     console.log("==============================================");
-//   }
+});
 
 
-//   // If the user doesn't guess the password...
-//   else {
-
-//     console.log("==============================================");
-//     console.log("");
-//     console.log("Sorry " + user.name);
-//     console.log("I'm calling the cops!");
-//     console.log("");
-//     console.log("==============================================");
-
-//   }
-// });
+};

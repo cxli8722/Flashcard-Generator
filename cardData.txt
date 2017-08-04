@@ -1,1 +1,0 @@
-{"front":"what is today","back":"friday"};{"front":"today is friday","back":"yes"};

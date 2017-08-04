@@ -16,7 +16,7 @@ var BasicCard= function(front, back) {
   };
 
 
-  fs.appendFile("cardData.txt", JSON.stringify(cardData) + ";", "utf8", function (err){
+  fs.appendFile("basicCard.txt", JSON.stringify(cardData) + ";", "utf8", function (err){
  // If an error was experienced we say it.
   if (err) {
     console.log(err);

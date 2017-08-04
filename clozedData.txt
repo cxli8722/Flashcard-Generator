@@ -1,1 +1,1 @@
-{"text":"friday","cloze":"today is friday","partial":"friday"};{"text":"today is friday","cloze":"friday","partial":"today is ..."};
+{"text":"friday","cloze":"today is friday","partial":"friday"};{"text":"today is friday","cloze":"friday","partial":"today is ..."};{"text":"what day is today","cloze":"friday","partial":"what day is today"};{"text":"today is friday","cloze":"y","partial":"toda... is friday"};{"text":"hello all","cloze":"hello all","partial":"..."};
