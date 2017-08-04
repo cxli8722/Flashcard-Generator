@@ -63,6 +63,60 @@ inquirer
     // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
     if (result.confirm && result.cardType=== 'bsic-flashcard') {
       console.log("okay you want to create " + result.cardType);
+
+      //----------------------------------------------------------
+
+      //asking user to enter their question and answer 
+      inquirer
+			  .prompt([
+
+			    
+
+			    // given the user a list to choose from.
+			    {
+			    	type: "input",
+				    name: "FrontCard",
+				    message: "please type your question"
+			     
+			    },
+
+			    {
+			      type: "input",
+			      name: "backCard",
+			      message: "plase type your answer"
+			    },
+			    // Here we ask the user to confirm.
+			    {
+			      type: "confirm",
+			      message: "are you sure that's the qusestion and answer you want?",
+			      name: "confirm",
+			      default: true
+			    }
+			  ])
+			  .then(function(result) {
+			    // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
+			    if (result.confirm && result.frontCard && result.backCard) {
+			      console.log("okay you want to create " + result.frontCard +"\n"+result.backCard);
+			      
+			  
+			  }
+			     
+			    else {
+			      console.log(" enter your question and answer again\n");
+			          createCard();
+			   }
+ 				 });
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+
+
      
     }
     else if (result.confirm && result.cardType=== 'cloze-flashcard') {
